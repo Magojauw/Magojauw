@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>João Da Rocha Carvalho Neto — Estudante de programação</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfólio de João Carvalho, estudante de programação de 12 anos. HTML, CSS, JavaScript e PHP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111014; --canvas:#F7F5F1; --white:#FFFFFF; --violet:#8D79AD;
+  --violet-soft:rgba(141,121,173,.16); --line:rgba(17,16,20,.12); --line-light:rgba(247,245,241,.18);
+  --maxw:1180px; --ease:cubic-bezier(.19,1,.22,1); color-scheme:light;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(96px + env(safe-area-inset-top,0px));}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:'Inter',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden;}
+h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;margin:0;letter-spacing:-.01em;}
+p{margin:0;line-height:1.65;}
+a{color:inherit;}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--violet);font-weight:500;}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--violet);}
+
+/* header */
+header#topo{position:sticky;top:0;z-index:50;background:var(--ink);padding-top:env(safe-area-inset-top,0px);box-shadow:0 8px 24px rgba(17,16,20,.14);}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:var(--maxw);margin:0 auto;padding:18px 32px;}
+.logo{font-weight:700;font-size:1.2rem;text-decoration:none;color:var(--canvas);}
+nav.links ul{list-style:none;display:flex;gap:32px;margin:0;padding:0;}
+nav.links a{text-decoration:none;font-size:.95rem;font-weight:500;color:rgba(247,245,241,.72);transition:color .2s;}
+nav.links a:hover{color:var(--canvas);}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 26px;border-radius:100px;font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:.92rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s,color .3s,border-color .3s;}
+.btn-fill{background:var(--ink);color:var(--canvas);}
+.btn-fill:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(17,16,20,.22);}
+.btn-line{border-color:rgba(17,16,20,.28);color:var(--ink);background:transparent;}
+.btn-line:hover{border-color:var(--ink);background:var(--ink);color:var(--canvas);}
+header#topo .nav-right .btn-fill{background:var(--canvas);color:var(--ink);}
+header#topo .nav-right .btn-fill:hover{box-shadow:0 12px 26px rgba(0,0,0,.24);}
+.on-dark .btn-line{border-color:rgba(247,245,241,.4);color:var(--canvas);}
+.on-dark .btn-line:hover{background:var(--canvas);color:var(--ink);border-color:var(--canvas);}
+.on-dark .btn-fill{background:var(--violet);color:var(--ink);}
+.on-dark .btn-fill:hover{box-shadow:0 14px 30px rgba(141,121,173,.35);}
+.burger{display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(247,245,241,.24);background:transparent;cursor:pointer;align-items:center;justify-content:center;padding:0;}
+.burger span,.burger span::before,.burger span::after{content:"";display:block;width:16px;height:1.5px;background:var(--canvas);position:relative;transition:transform .3s;}
+.burger span::before{position:absolute;top:-5px;}.burger span::after{position:absolute;top:5px;}
+.mobile-panel{display:none;}
+
+/* hero */
+.hero{padding:96px 0 88px;}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;}
+.eyebrow-free{font-size:.98rem;color:var(--violet);font-weight:600;margin-bottom:18px;display:block;}
+.hero h1{font-size:clamp(2.5rem,5vw + .6rem,4.4rem);font-weight:700;line-height:1.05;max-width:11ch;}
+.hero p.lead{margin-top:26px;font-size:1.12rem;max-width:44ch;color:rgba(17,16,20,.78);}
+.hero-actions{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;}
+.code-panel{background:var(--ink);border-radius:28px;padding:6px;border:1px solid rgba(247,245,241,.08);
+  box-shadow:0 30px 70px rgba(17,16,20,.28);}
+.code-top{display:flex;gap:7px;padding:14px 18px 10px;}
+.code-top span{width:9px;height:9px;border-radius:50%;background:rgba(247,245,241,.18);}
+.code-body{padding:6px 24px 26px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.92rem;line-height:1.85;color:rgba(247,245,241,.55);}
+.code-body .kw{color:var(--violet);} .code-body .str{color:#EFE9F5;} .code-body .num{color:var(--violet);}
+.code-caption{padding:0 24px 22px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.82rem;color:rgba(141,121,173,.75);}
+
+/* sobre */
+.sobre{padding:100px 0;}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.section-head h2{font-size:clamp(1.9rem,3vw + .5rem,2.6rem);font-weight:700;}
+.sobre p.body{margin-top:24px;font-size:1.06rem;max-width:52ch;color:rgba(17,16,20,.78);}
+.stats-row{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:8px;}
+.stat{flex:1 1 46%;padding:28px 26px 28px 0;border-bottom:1px solid var(--line);}
+.stat:nth-child(odd){border-right:1px solid var(--line);padding-left:0;}
+.stat b{display:block;font-family:'Bricolage Grotesque';font-size:2.1rem;font-weight:700;}
+.stat span{font-size:.92rem;color:rgba(17,16,20,.6);}
+
+/* projetos */
+.projetos{padding:100px 0;}
+.projetos p.body{margin-top:20px;font-size:1.06rem;max-width:56ch;color:rgba(17,16,20,.78);}
+.cards{margin-top:56px;display:grid;grid-template-columns:1.15fr 1fr;gap:24px;}
+.card{border-radius:28px;padding:40px;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;}
+.card.feat{background:var(--ink);color:var(--canvas);grid-row:span 2;}
+.card.light{background:var(--white);border:1px solid var(--line);}
+.card h3{font-size:1.5rem;font-weight:700;}
+.card p{margin-top:14px;font-size:.98rem;color:rgba(17,16,20,.72);max-width:36ch;}
+.card.feat p{color:rgba(247,245,241,.72);}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:26px;}
+.tech-pill{font-size:.8rem;padding:6px 14px;border-radius:100px;border:1px solid rgba(17,16,20,.18);color:rgba(17,16,20,.65);}
+.card.feat .tech-pill{border-color:rgba(247,245,241,.28);color:rgba(247,245,241,.7);}
+.card-link{font-size:.92rem;font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px;}
+.right-col{display:flex;flex-direction:column;gap:24px;}
+
+/* tecnologias */
+.tecnologias{padding:100px 0;background:var(--ink);color:var(--canvas);}
+.tecnologias .section-head h2{color:var(--canvas);}
+.tech-list{margin-top:54px;border-top:1px solid var(--line-light);}
+.tech-row{display:flex;align-items:baseline;justify-content:space-between;padding:26px 4px;
+  border-bottom:1px solid var(--line-light);}
+.tech-row h3{font-size:clamp(1.5rem,3vw + .3rem,2.3rem);font-weight:600;}
+.tech-row span{font-size:.95rem;color:rgba(247,245,241,.5);}
+
+/* processo */
+.processo{padding:100px 0;}
+.steps{margin-top:52px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+.step b{font-family:'Bricolage Grotesque';font-size:1.05rem;color:var(--violet);font-weight:600;}
+.step h3{margin-top:14px;font-size:1.2rem;font-weight:700;}
+.step p{margin-top:10px;font-size:.95rem;color:rgba(17,16,20,.7);}
+
+/* contato */
+.contato{padding:120px 0;background:var(--ink);color:var(--canvas);text-align:left;}
+.contato h2{font-size:clamp(2.2rem,4vw + .5rem,3.4rem);font-weight:700;max-width:14ch;}
+.contato p.lead{margin-top:22px;font-size:1.08rem;max-width:46ch;color:rgba(247,245,241,.68);}
+.contato .hero-actions{margin-top:38px;}
+
+footer{background:var(--ink);color:rgba(247,245,241,.7);padding:44px 0 calc(44px + env(safe-area-inset-bottom,0px));
+  border-top:1px solid var(--line-light);}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+.foot-grid .logo{color:var(--canvas);font-size:1.05rem;}
+.foot-grid p{margin-top:10px;font-size:.9rem;max-width:34ch;}
+.foot-links{display:flex;gap:26px;}
+.foot-links a{font-size:.9rem;text-decoration:none;color:rgba(247,245,241,.75);border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
+.foot-links a:hover{color:var(--canvas);border-color:rgba(247,245,241,.5);}
+
+@media (max-width:900px){
+  .hero-grid,.sobre-grid,.cards{grid-template-columns:1fr;}
+  .card.feat{grid-row:auto;}
+  .steps{grid-template-columns:1fr 1fr;}
+  nav.links,.nav-right .btn{display:none;}
+  .burger{display:flex;}
+  .mobile-panel{display:block;max-width:calc(var(--maxw));margin:8px auto 0;padding:0 6px;}
+  .mobile-panel.open .panel-inner{max-height:320px;padding:18px 20px 22px;opacity:1;}
+  .panel-inner{max-height:0;opacity:0;overflow:hidden;background:var(--ink);border-top:1px solid rgba(247,245,241,.12);transition:max-height .4s var(--ease),opacity .3s;}
+  .panel-inner ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;}
+  .panel-inner a{text-decoration:none;color:var(--canvas);font-weight:500;}
+  .panel-inner .btn{margin-top:14px;width:100%;}
+}
+@media (max-width:600px){
+  .steps{grid-template-columns:1fr;}
+  .stat{flex:1 1 100%;border-right:none !important;padding-left:0 !important;}
+  .tech-row{flex-direction:column;align-items:flex-start;gap:4px;}
+  .foot-grid{flex-direction:column;align-items:flex-start;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{transition:none !important;animation:none !important;}
+  .reveal{opacity:1 !important;transform:none !important;}
+}
+</style>
+</head>
+<body>
+
+<header id="topo">
+  <div class="nav-wrap">
+    <img src="Joao neto logo.png" width="250" height="100" alt="João Da Rocha Carvalho Neto" class="logo">
+    <nav class="links">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#tecnologias">Tecnologias</a></li>
+        <li><a href="#processo">Processo</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="#projetos" class="btn btn-fill">Ver projetos</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <div class="panel-inner">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#tecnologias">Tecnologias</a></li>
+        <li><a href="#processo">Processo</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a href="#projetos" class="btn btn-fill">Ver projetos</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <span class="tag reveal">Estudante de programação</span>
+        <h1 class="reveal" style="margin-top:16px;">Transformando ideias em projetos.</h1>
+        <p class="lead reveal">Sou João, estudante de programação. Gosto de criar projetos, experimentar novas ideias e aprender desenvolvimento web na prática.</p>
+        <div class="hero-actions reveal">
+          <a href="#projetos" class="btn btn-fill">Ver projetos</a>
+          <a href="https://github.com/Magojauw" class="btn btn-line" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+      <div class="code-panel reveal">
+        <div class="code-top"><span></span><span></span><span></span></div>
+        <div class="code-body">
+<span class="kw">const</span> joao = {<br>
+&nbsp;&nbsp;idade: <span class="num">12</span>,<br>
+&nbsp;&nbsp;estudando: [<span class="str">'HTML'</span>, <span class="str">'CSS'</span>, <span class="str">'JS'</span>, <span class="str">'PHP'</span>],<br>
+&nbsp;&nbsp;constroi: <span class="kw">true</span><br>
+};
+        </div>
+        <div class="code-caption">// aprendendo e construindo, um projeto por vez</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre" id="sobre">
+    <div class="container sobre-grid">
+      <div class="section-head reveal">
+        <h2>Sobre mim</h2>
+        <p class="body">Sou estudante de programação e gosto de transformar ideias em projetos reais. Atualmente estudo HTML, CSS, JavaScript e PHP, sempre buscando aprender algo novo e melhorar minhas habilidades.</p>
+      </div>
+      <div class="stats-row reveal">
+        <div class="stat"><b>12 anos</b><span>Idade</span></div>
+        <div class="stat"><b>Estudante</b><span>Ocupação</span></div>
+        <div class="stat"><b>4</b><span>Tecnologias</span></div>
+        <div class="stat"><b>Projetos</b><span>Pessoais</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projetos" id="projetos">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Projetos selecionados</h2>
+        <p class="body">Alguns projetos que criei para aprender, testar ideias e colocar meus conhecimentos em prática.</p>
+      </div>
+      <div class="cards reveal">
+        <div class="card feat">
+          <div>
+            <h3>NOVA</h3>
+            <p>Projeto de uma plataforma para conectar pessoas e profissionais.</p>
+          </div>
+          <div class="card-foot">
+            <span class="tech-pill">HTML · CSS · JS</span>
+            <a href="https://github.com/Magojauw/Magojauwb" class="card-link" target="_blank" rel="noopener noreferrer">Ver projeto</a>
+          </div>
+        </div>
+        <div class="right-col">
+          <div class="card light">
+            <div>
+              <h3>Projetos Web</h3>
+              <p>Sites e interfaces criados para praticar desenvolvimento e design.</p>
+            </div>
+            <div class="card-foot">
+              <span class="tech-pill">HTML · CSS</span>
+              <a href="#" class="card-link">Ver projeto</a>
+            </div>
+          </div>
+          <div class="card light">
+            <div>
+              <h3>Projetos pessoais</h3>
+              <p>Experimentos e ideias desenvolvidos durante meu aprendizado.</p>
+            </div>
+            <div class="card-foot">
+              <span class="tech-pill">JS · PHP</span>
+              <a href="#" class="card-link">Ver projeto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tecnologias" id="tecnologias">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>O que estou estudando</h2>
+      </div>
+      <div class="tech-list reveal">
+        <div class="tech-row"><h3>HTML</h3><span>Estrutura</span></div>
+        <div class="tech-row"><h3>CSS</h3><span>Estilo</span></div>
+        <div class="tech-row"><h3>JavaScript</h3><span>Interatividade</span></div>
+        <div class="tech-row"><h3>PHP</h3><span>Back-end</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="processo" id="processo">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Como eu crio</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><b>01</b><h3>Ideia</h3><p>Começo pensando no problema ou na ideia.</p></div>
+        <div class="step"><b>02</b><h3>Design</h3><p>Organizo a estrutura e a aparência.</p></div>
+        <div class="step"><b>03</b><h3>Código</h3><p>Transformo a ideia em uma experiência funcional.</p></div>
+        <div class="step"><b>04</b><h3>Evolução</h3><p>Testo, aprendo e continuo melhorando.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contato on-dark" id="contato">
+    <div class="container">
+      <h2 class="reveal">Vamos criar algo?</h2>
+      <p class="lead reveal">Estou sempre aprendendo, criando novos projetos e explorando novas ideias.</p>
+      <div class="hero-actions reveal">
+        <a href="https://github.com/Magojauw" class="btn btn-line" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#" class="btn btn-fill">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <span class="logo">João Da Rocha Carvalho Neto</span>
+      <p>Estudante de programação criando e aprendendo através de projetos.</p>
+    </div>
+    <div class="foot-links">
+      <a href="https://github.com/Magojauw" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="#">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+
+  var burger = document.getElementById('burger');
+  var panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (reduced || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
